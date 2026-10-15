@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniPulse - Campus Social Network</title>
+  <!-- Style sheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header bar -->
+  <header class="header">
+    <div class="container header-container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h1 class="logo">UniPulse</h1>
+        <p class="tagline">Campus Social Network</p>
+      </div>
+      <!-- Mock Role Switcher for Oral Defense Demo -->
+      <div class="role-switcher-box" style="background: #ffffff; color: #000000; padding: 6px 12px; border: 1px solid #000000;">
+        <label for="current-user-role" style="font-weight: bold; margin-right: 6px;">Active Role (Demo):</label>
+        <select id="current-user-role" style="padding: 4px 8px; font-family: inherit;">
+          <option value="student">Student (General Access)</option>
+          <option value="faculty">Faculty Member (Privileged)</option>
+          <option value="club_exec">Club Executive</option>
+          <option value="moderator">Campus Moderator</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main layout -->
+  <main class="container main-content">
+    <!-- Left panel -->
+    <section class="card panel-form">
+      <h2>Publish Announcement</h2>
+      <form id="post-form">
+        <!-- Title field -->
+        <div class="form-group">
+          <label for="post-title">Title</label>
+          <input type="text" id="post-title" required minlength="3" maxlength="120" placeholder="e.g. ACM Study Jam">
+        </div>
+
+        <!-- Author fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="author-name">Author Name</label>
+            <input type="text" id="author-name" required value="Sarah Connor">
+          </div>
+          <div class="form-group">
+            <label for="author-id">Author ID</label>
+            <input type="text" id="author-id" required value="u-sarah-101">
+          </div>
+        </div>
+
+        <!-- Audience selector -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="post-audience">Audience</label>
+            <select id="post-audience">
+              <option value="campus_only">Campus Only</option>
+              <option value="public">Public</option>
+              <option value="club_members">Club Members</option>
+              <option value="faculty_only">Faculty Only</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="community-id">Space / Community (Optional)</label>
+            <input type="text" id="community-id" placeholder="e.g. robotics or leave empty">
+          </div>
+        </div>
+
+        <!-- Content field -->
+        <div class="form-group">
+          <label for="post-content">Content</label>
+          <textarea id="post-content" rows="4" required minlength="5" placeholder="Write campus update or event details..."></textarea>
+        </div>
+
+        <!-- AI toggle (Unticked by default to satisfy FR-AI-02 human-in-the-loop verification) -->
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="request-ai">
+            Request AI Summary & Event Detection (PulseDigest)
+          </label>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="button-row">
+          <button type="button" id="btn-preview-ai" class="btn btn-secondary">AI Preview</button>
+          <button type="submit" id="btn-submit" class="btn btn-primary">Publish Post</button>
+        </div>
+      </form>
+
+      <!-- AI preview box with explicit event date and venue -->
+      <div id="ai-preview-box" class="ai-preview-box" style="display: none; margin-top: 16px; border: 1px solid #000; padding: 12px;">
+        <h3 style="margin-top: 0;">PulseDigest Preview (AI drafts, human verifies)</h3>
+        <p id="ai-preview-text" style="font-style: italic;"></p>
+        <p id="ai-preview-event-info" style="font-weight: bold; margin: 6px 0;"></p>
+        <div id="ai-preview-tags" class="tags-container"></div>
+        <div style="margin-top: 8px;">
+          <label style="font-size: 0.9em;">
+            <input type="checkbox" id="accept-ai-summary"> Accept & Attach this AI Summary to Post
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right panel -->
+    <section class="card panel-feed">
+      <div class="feed-header">
+        <h2>Campus Feed</h2>
+        <!-- Audience filter -->
+        <div class="filter-group">
+          <label for="filter-audience">Filter:</label>
+          <select id="filter-audience">
+            <option value="">All Permitted</option>
+            <option value="campus_only">Campus Only</option>
+            <option value="public">Public</option>
+            <option value="club_members">Club Members</option>
+            <option value="faculty_only">Faculty Only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Feed list -->
+      <div id="feed-status" class="feed-status">Loading posts...</div>
+      <div id="post-list" class="post-list"></div>
+    </section>
+  </main>
+
+  <!-- Script loader -->
+  <script src="app.js"></script>
+</body>
+</html>
