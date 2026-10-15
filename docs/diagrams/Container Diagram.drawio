@@ -1,0 +1,62 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="VGxGC-mGUqvc4Yz5rVFF">
+    <mxGraphModel dx="403" dy="178" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="b3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;strokeColor=#333333;strokeWidth=2;fillColor=none;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontStyle=1;fontSize=14;fontFamily=Times New Roman;" value="FastAPI Backend Application Container" vertex="1">
+          <mxGeometry height="600" width="840" x="160" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_post_r" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;Post Router&lt;/b&gt;&lt;br&gt;[FastAPI APIRouter]&lt;br&gt;Exposes REST endpoints for posts, drafts, and feed retrieval" vertex="1">
+          <mxGeometry height="80" width="180" x="200" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_ws_r" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;WebSocket Router&lt;/b&gt;&lt;br&gt;[FastAPI WebSocket]&lt;br&gt;Handles live collaborative editing rooms and diff syncing" vertex="1">
+          <mxGeometry height="80" width="180" x="440" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_mod_r" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;Moderation Router&lt;/b&gt;&lt;br&gt;[FastAPI APIRouter]&lt;br&gt;Handles abuse flagging, queue inspection, and appeals" vertex="1">
+          <mxGeometry height="80" width="180" x="680" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_guard" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#e1e1e1;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;Audience &amp; Auth Guard&lt;/b&gt;&lt;br&gt;[Dependency / Middleware]&lt;br&gt;Validates session tokens and enforces audience rules" vertex="1">
+          <mxGeometry height="60" width="320" x="360" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_post_s" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;Post Service&lt;/b&gt;&lt;br&gt;[Domain Service]&lt;br&gt;Executes post publishing rules and version increments" vertex="1">
+          <mxGeometry height="80" width="180" x="220" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_ai_s" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;PulseDigest AI Service&lt;/b&gt;&lt;br&gt;[Domain Service]&lt;br&gt;Calls LLM API, parses event tags, formats summaries" vertex="1">
+          <mxGeometry height="80" width="180" x="440" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_mod_s" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;Moderation Service&lt;/b&gt;&lt;br&gt;[Domain Service]&lt;br&gt;Manages report thresholds, strikes, and audit records" vertex="1">
+          <mxGeometry height="80" width="180" x="660" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_repo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;fontFamily=Times New Roman;fontSize=11;" value="&lt;b&gt;Post &amp; User Repository&lt;/b&gt;&lt;br&gt;[Data Access Layer]&lt;br&gt;Encapsulates SQL queries and data mapping" vertex="1">
+          <mxGeometry height="80" width="220" x="420" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_1" edge="1" parent="1" source="comp_post_r" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_guard" value="Guards request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_2" edge="1" parent="1" source="comp_ws_r" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_guard" value="Guards socket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_3" edge="1" parent="1" source="comp_mod_r" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_guard" value="Guards action">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_4" edge="1" parent="1" source="comp_guard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_post_s" value="Delegates domain logic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_5" edge="1" parent="1" source="comp_guard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_mod_s" value="Delegates report triage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_6" edge="1" parent="1" source="comp_post_s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_ai_s" value="Requests summary">
+          <mxGeometry relative="1" x="-1" y="-50" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3_7" edge="1" parent="1" source="comp_post_s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" target="comp_repo" value="Persists changes">
+          <mxGeometry relative="1" x="0.6522" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
