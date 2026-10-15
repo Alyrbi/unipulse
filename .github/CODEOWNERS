@@ -1,0 +1,20 @@
+# Each path is owned by the team member responsible for it (report Section 3.1).
+# GitHub automatically asks the owner to review any pull request touching these paths.
+#
+# M1 Ali Yaroobi          (Backend & API Lead)                @Alyrbi
+# M2 Saidamirkhon Yusupov (Frontend & UI/UX Lead)             @Saidamirhon07
+# M3 Ahmed Waqqas         (Architecture & Integration Lead)   @awalawlaqi
+# M4 Rawda Alkhoori       (QA, Requirements & DevOps Lead)    @rawdajjkk
+
+*                                    @Alyrbi @rawdajjkk
+
+/src/backend/                        @Alyrbi
+/src/backend/services/ai_service.py  @awalawlaqi
+/src/frontend/                       @Saidamirhon07
+/docs/diagrams/                      @awalawlaqi
+/docs/adr/                           @awalawlaqi
+/docs/screenshots/                   @awalawlaqi
+/docs/Assignment_01_Report.*         @rawdajjkk
+/tests/                              @rawdajjkk
+/pyproject.toml                      @rawdajjkk
+/.github/                            @rawdajjkk
